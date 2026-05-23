@@ -375,8 +375,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ───── Contact Form (fallback when no EmailJS) ─────
-    if (!cfg.EMAILJS_PUBLIC_KEY) {
+    // ───── Contact Form (fallback when no EmailJS and no Formspree) ─────
+    if (!cfg.EMAILJS_PUBLIC_KEY && !cfg.FORMPREE_ID) {
         const contactForm = document.getElementById('contact-form');
         if (contactForm) {
             contactForm.addEventListener('submit', (e) => {

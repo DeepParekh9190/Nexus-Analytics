@@ -7,7 +7,7 @@ window.NEXUS_CONFIG = {
 
   // ─── 1. Formspree (Contact Form) ───
   // Sign up at https://formspree.io → create a form → paste the ID
-  FORMPREE_ID: '',  // e.g. 'xvgpwdak'
+  FORMPREE_ID: 'xpqnlpzl',  // e.g. 'xvgpwdak'
 
   // ─── 2. EmailJS (Contact Form + Newsletter) ───
   // Sign up at https://www.emailjs.com → create service, template, get keys
