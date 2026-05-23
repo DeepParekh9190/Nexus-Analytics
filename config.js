@@ -12,9 +12,9 @@ window.NEXUS_CONFIG = {
   // ─── 2. EmailJS (Contact Form + Newsletter) ───
   // Sign up at https://www.emailjs.com → create service, template, get keys
   EMAILJS_PUBLIC_KEY: '',     // e.g. 'YOUR_PUBLIC_KEY'
-  EMAILJS_SERVICE_ID: '',     // e.g. 'service_abc123'
-  EMAILJS_CONTACT_TEMPLATE: '', // e.g. 'template_contact'
-  EMAILJS_NEWSLETTER_TEMPLATE: '', // e.g. 'template_newsletter'
+  EMAILJS_SERVICE_ID: 'service_95hn0wl',     // e.g. 'service_abc123'
+  EMAILJS_CONTACT_TEMPLATE: 'template_kbaiidl', // e.g. 'template_contact'
+  EMAILJS_NEWSLETTER_TEMPLATE: 'template_kbaiidl', // e.g. 'template_newsletter'
 
   // ─── 3. Plausible Analytics ───
   // Sign up at https://plausible.io → add your site → get script URL
