@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - Nexus Analytics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=4">
+    <script defer data-domain="nexus.dev" src="https://plausible.io/js/script.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="logo-icon">
+                  <path fill-rule="evenodd" d="M2.25 13.5a8.25 8.25 0 018.25-8.25.75.75 0 01.75.75v6.75H18a.75.75 0 01.75.75 8.25 8.25 0 01-16.5 0z" clip-rule="evenodd" />
+                  <path fill-rule="evenodd" d="M12.75 3a.75.75 0 01.75-.75 8.25 8.25 0 018.25 8.25.75.75 0 01-.75.75h-7.5a.75.75 0 01-.75-.75V3z" clip-rule="evenodd" />
+                </svg>
+                Nexus
+            </a>
+            <nav class="nav-links">
+                <a href="features.html">Features</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="developers.html">Developers</a>
+                <a href="docs.html">Documentation</a>
+                <a href="demo.html">Live Demo</a>
+                <a href="blog.html">Blog</a>
+            </nav>
+            <div class="nav-actions">
+                <div class="auth-guest">
+                    <a href="login.html" class="btn btn-ghost">Sign in</a>
+                    <a href="signup.html" class="btn btn-primary">Start for free &rarr;</a>
+                </div>
+                <div class="auth-user" style="display:none;">
+                    <div class="user-menu">
+                        <span class="user-avatar" id="user-avatar">U</span>
+                        <div class="user-dropdown" id="user-dropdown">
+                            <a href="index.html">Dashboard</a>
+                            <a href="#" id="logout-btn">Sign out</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1 class="hero-title">Simple, <span class="text-highlight">transparent pricing</span></h1>
+                <p class="hero-subtitle">Start for free, upgrade when you need more power. No hidden fees or surprise charges.</p>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="pricing">
+            <div class="container">
+                <div class="pricing-container fade-in">
+                    <div class="price-card">
+                        <div class="price-header">
+                            <h3 class="price-name">Standard</h3>
+                            <p class="price-desc">For small teams building side projects.</p>
+                        </div>
+                        <div class="price-amount">$0<span>/mo</span></div>
+                        <a href="#" class="btn btn-secondary full-width stripe-buy" data-price-id="">Get started</a>
+                        <ul class="price-features">
+                            <li>10,000 tracked events</li>
+                            <li>3 team members</li>
+                            <li>Basic analytics dashboard</li>
+                            <li>Community support</li>
+                        </ul>
+                    </div>
+                    <div class="price-card highlighted">
+                        <div class="price-header">
+                            <h3 class="price-name">Professional</h3>
+                            <p class="price-desc">For growing startups and businesses.</p>
+                        </div>
+                        <div class="price-amount">$49<span>/mo</span></div>
+                        <a href="#" class="btn btn-primary full-width stripe-buy" data-price-id="">Start free trial</a>
+                        <ul class="price-features">
+                            <li>1,000,000 tracked events</li>
+                            <li>Unlimited team members</li>
+                            <li>Advanced funnel analysis</li>
+                            <li>Priority email support</li>
+                            <li>Custom reporting</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Calculator -->
+        <section class="bg-gray">
+            <div class="container">
+                <div class="calculator-section fade-in">
+                    <div class="section-header">
+                        <h2 class="section-title">Estimate your <span class="text-highlight">cost</span></h2>
+                        <p class="section-subtitle">Slide to see which plan fits your volume.</p>
+                    </div>
+                    <div class="calculator-card">
+                        <div class="calc-header">
+                            <span class="calc-label">Monthly events</span>
+                            <span class="calc-value" id="calc-display">10K events/mo</span>
+                        </div>
+                        <input type="range" class="range-slider" id="calc-slider" min="1000" max="10000000" step="1000" value="10000">
+                        <div class="calc-result">
+                            <div class="calc-plan" id="calc-standard">
+                                <div class="calc-plan-name">Standard</div>
+                                <div class="calc-plan-price">$0<span>/mo</span></div>
+                                <div class="calc-plan-desc">Up to 10K events</div>
+                            </div>
+                            <div class="calc-plan" id="calc-pro">
+                                <div class="calc-plan-name">Professional</div>
+                                <div class="calc-plan-price">$49<span>/mo</span></div>
+                                <div class="calc-plan-desc">1M events included</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq">
+            <div class="container faq-container">
+                <div class="section-header">
+                    <h2 class="section-title">Billing FAQ</h2>
+                </div>
+                <div class="faq-list fade-in">
+                    <div class="faq-item">
+                        <h4 class="faq-question">What counts as a "tracked event"?</h4>
+                        <p class="faq-answer">Any data point sent to our API counts as one event. This includes pageviews, button clicks, and custom custom logic.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4 class="faq-question">Can I cancel anytime?</h4>
+                        <p class="faq-answer">Yes, there are no long-term contracts. You can downgrade or cancel your plan at any time from your billing dashboard.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container cta-container">
+                <h2 class="cta-title">Ready to get started?</h2>
+                <div class="cta-buttons">
+                    <a href="pricing.html" class="btn btn-primary btn-large">Start now</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="logo-icon">
+                      <path fill-rule="evenodd" d="M2.25 13.5a8.25 8.25 0 018.25-8.25.75.75 0 01.75.75v6.75H18a.75.75 0 01.75.75 8.25 8.25 0 01-16.5 0z" clip-rule="evenodd" />
+                      <path fill-rule="evenodd" d="M12.75 3a.75.75 0 01.75-.75 8.25 8.25 0 018.25 8.25.75.75 0 01-.75.75h-7.5a.75.75 0 01-.75-.75V3z" clip-rule="evenodd" />
+                    </svg>
+                    Nexus
+                </a>
+                <p class="footer-tagline">Analytics infrastructure for the modern web. Track, analyze, and grow your business.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Subscribe to our newsletter" class="newsletter-input" required>
+                    <button type="submit" class="btn btn-primary" style="padding: 0.625rem 1rem;">Subscribe</button>
+                </form>
+                <div class="social-links">
+                    <a href="#" class="social-icon">X</a>
+                    <a href="#" class="social-icon">GH</a>
+                    <a href="#" class="social-icon">IN</a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Products</h4>
+                <a href="features.html">Analytics</a>
+                <a href="features.html">Events</a>
+                <a href="features.html">Audiences</a>
+            </div>
+            <div class="footer-links">
+                <h4>Developers</h4>
+                <a href="docs.html">Documentation</a>
+                <a href="developers.html">API Reference</a>
+                <a href="developers.html">API Status</a>
+            </div>
+            <div class="footer-links">
+                <h4>Company</h4>
+                <a href="contact.html">Contact</a>
+                <a href="blog.html">Blog</a>
+                <a href="status.html">API Status</a>
+                <a href="#">Careers</a>
+            </div>
+        </div>
+        <div class="container copyright">
+            <p>&copy; 2026 Nexus Analytics, Inc. <a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a></p>
+        </div>
+    </footer>
+    <div class="chat-widget" id="chat-widget">
+    <button class="chat-toggle" id="chat-toggle" aria-label="Open chat"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" /></svg></button>
+    <div class="chat-window" id="chat-window">
+        <div class="chat-header"><span>Nexus Support</span><button class="chat-close" id="chat-close">&times;</button></div>
+        <div class="chat-messages" id="chat-messages"><div class="chat-msg bot">Hi! How can I help you today?</div></div>
+        <form class="chat-input-form" id="chat-form"><input type="text" id="chat-input" placeholder="Type a message..." autocomplete="off"><button type="submit">Send</button></form>
+    </div>
+</div>
+
+<div class="modal-overlay" id="newsletter-modal">
+    <div class="modal-card">
+        <button class="modal-close">&times;</button>
+        <h3>Stay in the loop</h3>
+        <p>Get product updates, engineering insights, and early access to new features.</p>
+        <form class="newsletter-form" id="modal-form"><input type="email" placeholder="you@example.com" required><button type="submit" class="btn btn-primary full-width">Subscribe</button></form>
+        <button class="modal-dismiss">No thanks, I'm good</button>
+    </div>
+</div>
+
+    <script src="config.js"></script>
+    <script src="script.js?v=3"></script>
+</body>
+</html>

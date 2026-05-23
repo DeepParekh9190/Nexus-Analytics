@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" fill="none">
+  <rect width="400" height="200" fill="#f9fafb" rx="8"/>
+  <rect x="30" y="50" width="120" height="100" rx="8" fill="#ffedd5" stroke="#f97316" stroke-width="2"/>
+  <text x="90" y="80" text-anchor="middle" fill="#f97316" font-size="11" font-weight="bold">Mixpanel</text>
+  <line x1="60" y1="95" x2="120" y2="95" stroke="#f97316" stroke-width="1.5" opacity="0.3"/>
+  <rect x="50" y="105" width="80" height="8" rx="4" fill="#f97316" opacity="0.3"/>
+  <rect x="55" y="120" width="70" height="8" rx="4" fill="#f97316" opacity="0.2"/>
+  <rect x="60" y="135" width="60" height="8" rx="4" fill="#f97316" opacity="0.15"/>
+  <path d="M155 100h30" stroke="#f97316" stroke-width="3" stroke-linecap="round"/>
+  <polygon points="190,93 200,100 190,107" fill="#f97316"/>
+  <rect x="250" y="50" width="120" height="100" rx="8" fill="#f97316"/>
+  <text x="310" y="80" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">Nexus</text>
+  <line x1="280" y1="95" x2="340" y2="95" stroke="#fff" stroke-width="1.5" opacity="0.3"/>
+  <rect x="270" y="105" width="80" height="8" rx="4" fill="#fff" opacity="0.6"/>
+  <rect x="275" y="120" width="70" height="8" rx="4" fill="#fff" opacity="0.4"/>
+  <rect x="280" y="135" width="60" height="8" rx="4" fill="#fff" opacity="0.3"/>
+  <text x="310" y="175" text-anchor="middle" fill="#10b981" font-size="12" font-weight="bold">-60% cost</text>
+</svg>

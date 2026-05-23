@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation - Nexus Analytics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=4">
+    <script defer data-domain="nexus.dev" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="logo-icon">
+                  <path fill-rule="evenodd" d="M2.25 13.5a8.25 8.25 0 018.25-8.25.75.75 0 01.75.75v6.75H18a.75.75 0 01.75.75 8.25 8.25 0 01-16.5 0z" clip-rule="evenodd" />
+                  <path fill-rule="evenodd" d="M12.75 3a.75.75 0 01.75-.75 8.25 8.25 0 018.25 8.25.75.75 0 01-.75.75h-7.5a.75.75 0 01-.75-.75V3z" clip-rule="evenodd" />
+                </svg>
+                Nexus
+            </a>
+            <nav class="nav-links">
+                <a href="features.html">Features</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="developers.html">Developers</a>
+                <a href="docs.html" style="color: var(--text-primary);">Documentation</a>
+                <a href="demo.html">Live Demo</a>
+                <a href="blog.html">Blog</a>
+            </nav>
+            <div class="nav-actions">
+                <div class="auth-guest">
+                    <a href="login.html" class="btn btn-ghost">Sign in</a>
+                    <a href="signup.html" class="btn btn-primary">Start for free &rarr;</a>
+                </div>
+                <div class="auth-user" style="display:none;">
+                    <div class="user-menu">
+                        <span class="user-avatar" id="user-avatar">U</span>
+                        <div class="user-dropdown" id="user-dropdown">
+                            <a href="index.html">Dashboard</a>
+                            <a href="#" id="logout-btn">Sign out</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="docs-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="docs-sidebar">
+            <nav class="sidebar-nav">
+                <div class="sidebar-section">
+                    <h4>Getting Started</h4>
+                    <a href="#quickstart" class="active">Quickstart</a>
+                    <a href="#authentication">Authentication</a>
+                    <a href="#errors">Errors</a>
+                </div>
+                <div class="sidebar-section">
+                    <h4>Core Concepts</h4>
+                    <a href="#">Events & Properties</a>
+                    <a href="#">Users & Groups</a>
+                    <a href="#">Sessions</a>
+                </div>
+                <div class="sidebar-section">
+                    <h4>API Reference</h4>
+                    <a href="#">POST /v1/track</a>
+                    <a href="#">POST /v1/identify</a>
+                    <a href="#">GET /v1/users/:id</a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="docs-content">
+            <div class="docs-container">
+                <p class="breadcrumbs">Documentation / Getting Started / <strong>Quickstart</strong></p>
+                <h1 class="docs-title"><span class="text-highlight">Quickstart</span> Guide</h1>
+                <p class="docs-lead">Learn how to integrate Nexus Analytics into your application in less than 5 minutes.</p>
+
+                <hr class="docs-divider">
+
+                <h2 id="quickstart">1. Install the SDK</h2>
+                <p>We recommend using our official SDKs for the best developer experience. To get started with Node.js, install the package via npm or yarn:</p>
+                <div class="code-block">
+                    <code>npm install @nexus/node</code>
+                </div>
+
+                <h2 id="authentication">2. Initialize the Client</h2>
+                <p>You need to authenticate your API requests using your Secret API Key. You can find this in your <a href="#">Dashboard Settings</a>.</p>
+                <div class="alert alert-warning">
+                    <strong>Warning:</strong> Never expose your Secret API Key in client-side code (like a React or Vue app). Use the Publishable Key for frontend applications.
+                </div>
+                
+                <div class="code-block multi-line">
+<pre><code><span class="keyword">import</span> { NexusClient } <span class="keyword">from</span> <span class="string">'@nexus/node'</span>;
+
+<span class="keyword">const</span> nexus = <span class="keyword">new</span> NexusClient({
+  <span class="property">apiKey</span>: <span class="string">'sk_live_...'</span>
+});</code></pre>
+                </div>
+
+                <h2 id="track">3. Track an Event</h2>
+                <p>Once initialized, you can start tracking events immediately. The <code>track</code> method requires an event name and a distinct user ID.</p>
+                
+                <table class="docs-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>event</code></td>
+                            <td><span class="tag">string</span></td>
+                            <td>The name of the action being tracked (e.g. "Signed Up").</td>
+                        </tr>
+                        <tr>
+                            <td><code>userId</code></td>
+                            <td><span class="tag">string</span></td>
+                            <td>A unique identifier for the user performing the action.</td>
+                        </tr>
+                        <tr>
+                            <td><code>properties</code></td>
+                            <td><span class="tag">object</span> <span class="optional">optional</span></td>
+                            <td>A dictionary of key-value pairs representing additional data.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>Example usage:</p>
+                <div class="code-block multi-line">
+<pre><code><span class="keyword">await</span> nexus.track({
+  <span class="property">event</span>: <span class="string">'Account Created'</span>,
+  <span class="property">userId</span>: <span class="string">'usr_12345'</span>,
+  <span class="property">properties</span>: {
+    <span class="property">plan</span>: <span class="string">'Pro'</span>
+  }
+});</code></pre>
+                </div>
+
+                <hr class="docs-divider">
+
+                <h2 id="playground">4. API Playground</h2>
+                <p>Try the Nexus API right here. Select an endpoint, enter a JSON body, and see a simulated response.</p>
+
+                <div class="api-playground">
+                    <div class="playground-tabs">
+                        <button class="playground-tab active" data-target="playground-track">POST /v1/track</button>
+                        <button class="playground-tab" data-target="playground-identify">POST /v1/identify</button>
+                    </div>
+
+                    <div class="playground-panel active" id="playground-track">
+                        <p style="font-size:0.875rem;color:var(--text-secondary);margin:1rem 0;">Track a custom event for a user.</p>
+                        <div class="playground-editor">
+                            <textarea spellcheck="false">{
+    "event": "Button Clicked",
+    "userId": "usr_12345",
+    "properties": {
+        "button": "signup_cta",
+        "page": "/pricing"
+    }
+}</textarea>
+                        </div>
+                        <div class="playground-actions">
+                            <button class="btn btn-primary playground-send">Send request</button>
+                            <button class="btn btn-secondary" onclick="this.closest('.playground-panel').querySelector('textarea').value='{\n    \"event\": \"Page Viewed\",\n    \"userId\": \"usr_12345\",\n    \"properties\": {\n        \"page\": \"/features\",\n        \"referrer\": \"google\"\n    }\n}'">Reset</button>
+                        </div>
+                        <div class="playground-response">Click "Send request" to test the API.</div>
+                    </div>
+
+                    <div class="playground-panel" id="playground-identify">
+                        <p style="font-size:0.875rem;color:var(--text-secondary);margin:1rem 0;">Identify a user and set their traits.</p>
+                        <div class="playground-editor">
+                            <textarea spellcheck="false">{
+    "userId": "usr_12345",
+    "traits": {
+        "name": "Jane Smith",
+        "email": "jane@acme.com",
+        "plan": "professional",
+        "role": "admin"
+    }
+}</textarea>
+                        </div>
+                        <div class="playground-actions">
+                            <button class="btn btn-primary playground-send">Send request</button>
+                            <button class="btn btn-secondary" onclick="this.closest('.playground-panel').querySelector('textarea').value='{\n    \"userId\": \"usr_67890\",\n    \"traits\": {\n        \"name\": \"Alex Kim\",\n        \"email\": \"alex@startup.io\",\n        \"plan\": \"standard\"\n    }\n}'">Reset</button>
+                        </div>
+                        <div class="playground-response">Click "Send request" to test the API.</div>
+                    </div>
+                </div>
+
+                <div class="docs-footer">
+                    <a href="#" class="docs-nav-link prev">&larr; Introduction</a>
+                    <a href="#" class="docs-nav-link next">Authentication &rarr;</a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container copyright" style="border-top: none;">
+            <p>&copy; 2026 Nexus Analytics, Inc. <a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a></p>
+        </div>
+    </footer>
+    <div class="chat-widget" id="chat-widget">
+    <button class="chat-toggle" id="chat-toggle" aria-label="Open chat"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" /></svg></button>
+    <div class="chat-window" id="chat-window">
+        <div class="chat-header"><span>Nexus Support</span><button class="chat-close" id="chat-close">&times;</button></div>
+        <div class="chat-messages" id="chat-messages"><div class="chat-msg bot">Hi! How can I help you today?</div></div>
+        <form class="chat-input-form" id="chat-form"><input type="text" id="chat-input" placeholder="Type a message..." autocomplete="off"><button type="submit">Send</button></form>
+    </div>
+</div>
+
+<div class="modal-overlay" id="newsletter-modal">
+    <div class="modal-card">
+        <button class="modal-close">&times;</button>
+        <h3>Stay in the loop</h3>
+        <p>Get product updates, engineering insights, and early access to new features.</p>
+        <form class="newsletter-form" id="modal-form"><input type="email" placeholder="you@example.com" required><button type="submit" class="btn btn-primary full-width">Subscribe</button></form>
+        <button class="modal-dismiss">No thanks, I'm good</button>
+    </div>
+</div>
+
+    <script src="config.js"></script>
+    <script src="script.js?v=3"></script>
+</body>
+</html>

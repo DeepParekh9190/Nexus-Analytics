@@ -1,0 +1,26 @@
+{
+  "events": [
+    {
+      "id": "evt_001",
+      "event": "Button Clicked",
+      "userId": "usr_12345",
+      "properties": {
+        "button": "signup_cta",
+        "page": "/pricing"
+      },
+      "timestamp": "2026-05-23T10:30:00Z"
+    }
+  ],
+  "identify": [
+    {
+      "id": "usr_12345",
+      "traits": {
+        "name": "Jane Smith",
+        "email": "jane@acme.com",
+        "plan": "professional",
+        "role": "admin"
+      },
+      "timestamp": "2026-05-23T10:30:00Z"
+    }
+  ]
+}

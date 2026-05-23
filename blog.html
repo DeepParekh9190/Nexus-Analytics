@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Nexus Analytics</title>
+    <meta name="description" content="Engineering insights, product updates, and tutorials from the Nexus team.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=4">
+    <script defer data-domain="nexus.dev" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="logo-icon"><path fill-rule="evenodd" d="M2.25 13.5a8.25 8.25 0 018.25-8.25.75.75 0 01.75.75v6.75H18a.75.75 0 01.75.75 8.25 8.25 0 01-16.5 0z" clip-rule="evenodd" /><path fill-rule="evenodd" d="M12.75 3a.75.75 0 01.75-.75 8.25 8.25 0 018.25 8.25.75.75 0 01-.75.75h-7.5a.75.75 0 01-.75-.75V3z" clip-rule="evenodd" /></svg>
+                Nexus
+            </a>
+            <nav class="nav-links">
+                <a href="features.html">Features</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="developers.html">Developers</a>
+                <a href="docs.html">Documentation</a>
+                <a href="demo.html">Live Demo</a>
+                <a href="blog.html" style="color:var(--text-primary);">Blog</a>
+            </nav>
+            <div class="nav-actions">
+                <div class="auth-guest">
+                    <a href="login.html" class="btn btn-ghost">Sign in</a>
+                    <a href="signup.html" class="btn btn-primary">Start for free &rarr;</a>
+                </div>
+                <div class="auth-user" style="display:none;">
+                    <div class="user-menu">
+                        <span class="user-avatar" id="user-avatar">U</span>
+                        <div class="user-dropdown" id="user-dropdown">
+                            <a href="index.html">Dashboard</a>
+                            <a href="#" id="logout-btn">Sign out</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <main>
+        <section class="blog-header">
+            <div class="container">
+                <h1 class="hero-title">The <span class="text-highlight">Nexus</span> Blog</h1>
+                <p class="hero-subtitle">Engineering deep-dives, product updates, and tutorials from the team.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="blog-grid">
+                    <article class="blog-card fade-in">
+                        <div class="blog-card-image"><img src="images/blog-pipeline.svg" alt="Data pipeline illustration" class="blog-img"></div>
+                        <div class="blog-card-body">
+                            <span class="blog-category">Engineering</span>
+                            <h3>Building a Real-Time Event Pipeline at Scale</h3>
+                            <p>How we process 50M+ events per day with sub-100ms latency using a distributed streaming architecture.</p>
+                            <div class="blog-meta"><span>May 15, 2026</span><span>8 min read</span></div>
+                        </div>
+                    </article>
+                    <article class="blog-card fade-in">
+                        <div class="blog-card-image"><img src="images/blog-sync.svg" alt="Real-time sync illustration" class="blog-img"></div>
+                        <div class="blog-card-body">
+                            <span class="blog-category">Product</span>
+                            <h3>Introducing Nexus 2.0: Real-Time Sync</h3>
+                            <p>Our biggest update yet — see your data update instantly across all dashboards with zero configuration.</p>
+                            <div class="blog-meta"><span>May 10, 2026</span><span>5 min read</span></div>
+                        </div>
+                    </article>
+                    <article class="blog-card fade-in">
+                        <div class="blog-card-image"><img src="images/blog-api.svg" alt="API code illustration" class="blog-img"></div>
+                        <div class="blog-card-body">
+                            <span class="blog-category">Tutorial</span>
+                            <h3>Getting Started with the Nexus API</h3>
+                            <p>A step-by-step guide to tracking your first event, identifying users, and building custom dashboards.</p>
+                            <div class="blog-meta"><span>May 5, 2026</span><span>10 min read</span></div>
+                        </div>
+                    </article>
+                    <article class="blog-card fade-in">
+                        <div class="blog-card-image"><img src="images/blog-security.svg" alt="Security shield illustration" class="blog-img"></div>
+                        <div class="blog-card-body">
+                            <span class="blog-category">Engineering</span>
+                            <h3>How We Achieved SOC 2 Type II Compliance</h3>
+                            <p>An inside look at our security infrastructure, audit process, and what it means for your data.</p>
+                            <div class="blog-meta"><span>Apr 28, 2026</span><span>6 min read</span></div>
+                        </div>
+                    </article>
+                    <article class="blog-card fade-in">
+                        <div class="blog-card-image"><img src="images/blog-funnel.svg" alt="Funnel analysis illustration" class="blog-img"></div>
+                        <div class="blog-card-body">
+                            <span class="blog-category">Product</span>
+                            <h3>New: Funnel Analysis & Conversion Tracking</h3>
+                            <p>Understand where users drop off with our new visual funnel builder and cohort analysis tools.</p>
+                            <div class="blog-meta"><span>Apr 20, 2026</span><span>4 min read</span></div>
+                        </div>
+                    </article>
+                    <article class="blog-card fade-in">
+                        <div class="blog-card-image"><img src="images/blog-migration.svg" alt="Migration illustration" class="blog-img"></div>
+                        <div class="blog-card-body">
+                            <span class="blog-category">Tutorial</span>
+                            <h3>Migrating from Mixpanel to Nexus</h3>
+                            <p>A complete migration guide including schema mapping, data export, and zero-downtime cutover strategies.</p>
+                            <div class="blog-meta"><span>Apr 12, 2026</span><span>12 min read</span></div>
+                        </div>
+                    </article>
+                </div>
+                <div class="blog-pagination">
+                    <button class="pagination-btn active">1</button>
+                    <button class="pagination-btn">2</button>
+                    <button class="pagination-btn">3</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="chat-widget" id="chat-widget">
+        <button class="chat-toggle" id="chat-toggle" aria-label="Open chat"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" /></svg></button>
+        <div class="chat-window" id="chat-window">
+            <div class="chat-header"><span>Nexus Support</span><button class="chat-close" id="chat-close">&times;</button></div>
+            <div class="chat-messages" id="chat-messages"><div class="chat-msg bot">Hi! How can I help you today?</div></div>
+            <form class="chat-input-form" id="chat-form">
+                <input type="text" id="chat-input" placeholder="Type a message..." autocomplete="off">
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="newsletter-modal">
+        <div class="modal-card">
+            <button class="modal-close">&times;</button>
+            <h3>Stay in the loop</h3>
+            <p>Get product updates, engineering insights, and early access to new features.</p>
+            <form class="newsletter-form" id="modal-form">
+                <input type="email" placeholder="you@example.com" required>
+                <button type="submit" class="btn btn-primary full-width">Subscribe</button>
+            </form>
+            <button class="modal-dismiss">No thanks, I'm good</button>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="logo-icon"><path fill-rule="evenodd" d="M2.25 13.5a8.25 8.25 0 018.25-8.25.75.75 0 01.75.75v6.75H18a.75.75 0 01.75.75 8.25 8.25 0 01-16.5 0z" clip-rule="evenodd" /><path fill-rule="evenodd" d="M12.75 3a.75.75 0 01.75-.75 8.25 8.25 0 018.25 8.25.75.75 0 01-.75.75h-7.5a.75.75 0 01-.75-.75V3z" clip-rule="evenodd" /></svg>Nexus</a>
+                <p class="footer-tagline">Analytics infrastructure for the modern web. Track, analyze, and grow your business.</p>
+                <form class="newsletter-form"><input type="email" placeholder="Subscribe to our newsletter" class="newsletter-input" required><button type="submit" class="btn btn-primary" style="padding:0.625rem 1rem;">Subscribe</button></form>
+                <div class="social-links"><a href="#" class="social-icon">X</a><a href="#" class="social-icon">GH</a><a href="#" class="social-icon">IN</a></div>
+            </div>
+            <div class="footer-links"><h4>Products</h4><a href="features.html">Analytics</a><a href="features.html">Events</a><a href="features.html">Audiences</a></div>
+            <div class="footer-links"><h4>Developers</h4><a href="docs.html">Documentation</a><a href="developers.html">API Reference</a><a href="status.html">API Status</a></div>
+            <div class="footer-links"><h4>Company</h4><a href="contact.html">Contact</a><a href="blog.html">Blog</a><a href="careers.html">Careers</a></div>
+        </div>
+        <div class="container copyright"><p>&copy; 2026 Nexus Analytics, Inc. <a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a></p></div>
+    </footer>
+    <script src="config.js"></script>
+    <script src="script.js?v=3"></script>
+</body>
+</html>
