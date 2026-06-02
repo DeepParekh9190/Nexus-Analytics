@@ -14,6 +14,9 @@
     </script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"WebPage","name":"Sign Up - Nexus Analytics","description":"Create your Nexus Analytics account.","url":"https://nexus.dev/signup.html"}
+    </script>
 </head>
 <body>
     <header class="navbar">
@@ -124,7 +127,19 @@
     </div>
 </div>
 
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5"/></svg>
+    </button>
+    <div class="cookie-banner" id="cookie-banner">
+        <div class="cookie-content">
+            <p>We use essential cookies to operate our site. <a href="privacy.html">Learn more</a></p>
+            <div class="cookie-actions">
+                <button class="cookie-btn accept" id="cookie-accept">Accept</button>
+                <button class="cookie-btn decline" id="cookie-decline">Decline</button>
+            </div>
+        </div>
+    </div>
     <script src="config.js"></script>
-    <script src="script.js?v=3"></script>
+    <script src="script.js?v=4"></script>
 </body>
 </html>

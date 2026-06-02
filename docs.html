@@ -12,6 +12,11 @@
       window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
       plausible.init()
     </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-okaidia.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js" defer></script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"WebPage","name":"Documentation - Nexus Analytics","description":"Developer documentation for the Nexus Analytics API.","url":"https://nexus.dev/docs.html"}
+    </script>
 </head>
 <body>
     <header class="navbar">
@@ -78,7 +83,7 @@
         </aside>
 
         <!-- Main Content -->
-        <main class="docs-content">
+        <main class="docs-content fade-in-up">
             <div class="docs-container">
                 <p class="breadcrumbs">Documentation / Getting Started / <strong>Quickstart</strong></p>
                 <h1 class="docs-title"><span class="text-highlight">Quickstart</span> Guide</h1>
@@ -230,7 +235,19 @@
     </div>
 </div>
 
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5"/></svg>
+    </button>
+    <div class="cookie-banner" id="cookie-banner">
+        <div class="cookie-content">
+            <p>We use essential cookies to operate our site. <a href="privacy.html">Learn more</a></p>
+            <div class="cookie-actions">
+                <button class="cookie-btn accept" id="cookie-accept">Accept</button>
+                <button class="cookie-btn decline" id="cookie-decline">Decline</button>
+            </div>
+        </div>
+    </div>
     <script src="config.js"></script>
-    <script src="script.js?v=3"></script>
+    <script src="script.js?v=4"></script>
 </body>
 </html>

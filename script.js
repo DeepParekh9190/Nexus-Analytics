@@ -203,40 +203,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ───── Mobile Menu Toggle ─────
     const mobileBtn = document.querySelector('.mobile-menu-btn');
-    const navLinks = document.querySelector('.nav-links');
-    const navActions = document.querySelector('.nav-actions');
+    const navbar = document.querySelector('.navbar');
 
-    if (mobileBtn) {
+    if (mobileBtn && navbar) {
         mobileBtn.addEventListener('click', () => {
-            const isExpanded = navLinks?.style.display === 'flex';
-            if (!isExpanded) {
-                navLinks.style.display = 'flex';
-                navLinks.style.flexDirection = 'column';
-                navLinks.style.position = 'absolute';
-                navLinks.style.top = '100%';
-                navLinks.style.left = '0';
-                navLinks.style.width = '100%';
-                navLinks.style.background = '#ffffff';
-                navLinks.style.padding = '2rem';
-                navLinks.style.alignItems = 'center';
-                navLinks.style.borderBottom = '1px solid var(--border-color)';
-                navLinks.style.boxShadow = 'var(--shadow-md)';
-                navActions.style.display = 'flex';
-                navActions.style.position = 'absolute';
-                navActions.style.top = 'calc(100% + 200px)';
-                navActions.style.left = '0';
-                navActions.style.width = '100%';
-                navActions.style.justifyContent = 'center';
-                navActions.style.padding = '1rem';
-            } else {
-                navLinks.style = '';
-                navActions.style = '';
-            }
+            navbar.classList.toggle('nav-open');
         });
     }
 
     // ───── Navbar Scroll Effect ─────
-    const navbar = document.querySelector('.navbar');
     if (navbar) {
         window.addEventListener('scroll', () => {
             if (window.scrollY > 20) {
@@ -249,9 +224,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ───── Reset Mobile Styles on Resize ─────
     window.addEventListener('resize', () => {
-        if (window.innerWidth > 768) {
-            if (navLinks) navLinks.style = '';
-            if (navActions) navActions.style = '';
+        if (window.innerWidth > 768 && navbar) {
+            navbar.classList.remove('nav-open');
         }
     });
 
@@ -598,5 +572,104 @@ document.addEventListener('DOMContentLoaded', () => {
     initFirebaseAuth();
     initJsonServerPlayground();
     initNewsletterFallback();
+
+    // ───── Back to Top Button ─────
+    const backToTop = document.getElementById('back-to-top');
+    if (backToTop) {
+        window.addEventListener('scroll', () => {
+            backToTop.classList.toggle('visible', window.scrollY > 400);
+        });
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // ───── Cookie Consent Banner ─────
+    const cookieBanner = document.getElementById('cookie-banner');
+    if (cookieBanner && !localStorage.getItem('nexus_cookie_consent')) {
+        setTimeout(() => cookieBanner.classList.add('visible'), 1000);
+        const acceptBtn = document.getElementById('cookie-accept');
+        const declineBtn = document.getElementById('cookie-decline');
+        if (acceptBtn) {
+            acceptBtn.addEventListener('click', () => {
+                localStorage.setItem('nexus_cookie_consent', 'accepted');
+                cookieBanner.classList.remove('visible');
+            });
+        }
+        if (declineBtn) {
+            declineBtn.addEventListener('click', () => {
+                localStorage.setItem('nexus_cookie_consent', 'declined');
+                cookieBanner.classList.remove('visible');
+            });
+        }
+    }
+
+    // ───── Enhanced Scroll Animations ─────
+    const animObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                animObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in, .fade-in-up, .fade-in-scale, .fade-in-left, .fade-in-right, .stagger-children').forEach(el => animObserver.observe(el));
+
+    // ───── Blog Search ─────
+    const blogSearch = document.getElementById('blog-search');
+    const blogCards = document.querySelectorAll('.blog-card');
+    const noResults = document.getElementById('blog-no-results');
+    if (blogSearch && blogCards.length) {
+        blogSearch.addEventListener('input', () => {
+            const q = blogSearch.value.trim().toLowerCase();
+            let count = 0;
+            blogCards.forEach(card => {
+                const title = card.querySelector('h3')?.textContent?.toLowerCase() || '';
+                const desc = card.querySelector('p')?.textContent?.toLowerCase() || '';
+                const cat = card.querySelector('.blog-category')?.textContent?.toLowerCase() || '';
+                const match = !q || title.includes(q) || desc.includes(q) || cat.includes(q);
+                card.style.display = match ? '' : 'none';
+                if (match) count++;
+            });
+            if (noResults) noResults.classList.toggle('visible', count === 0);
+        });
+    }
+
+    // ───── Social Share Buttons ─────
+    document.querySelectorAll('.share-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const url = encodeURIComponent(btn.dataset.url || window.location.href);
+            const title = encodeURIComponent(btn.dataset.title || document.title);
+            const platform = btn.dataset.platform;
+            let shareUrl = '';
+            if (platform === 'twitter') shareUrl = `https://twitter.com/intent/tweet?text=${title}&url=${url}`;
+            else if (platform === 'linkedin') shareUrl = `https://linkedin.com/sharing/share-offsite/?url=${url}`;
+            else if (platform === 'copy') {
+                navigator.clipboard.writeText(decodeURIComponent(url)).then(() => {
+                    const orig = btn.textContent;
+                    btn.textContent = 'Copied!';
+                    setTimeout(() => btn.textContent = orig, 2000);
+                });
+                return;
+            }
+            if (shareUrl) window.open(shareUrl, '_blank', 'width=600,height=400');
+        });
+    });
+
+    // ───── Loading Skeleton Toggle ─────
+    document.querySelectorAll('[data-skeleton]').forEach(el => {
+        const realId = el.dataset.skeleton;
+        const realEl = document.getElementById(realId);
+        if (realEl) {
+            const observer = new MutationObserver(() => {
+                if (realEl.textContent && realEl.textContent !== 'loading...' && realEl.textContent !== '—') {
+                    el.classList.remove('skeleton');
+                    observer.disconnect();
+                }
+            });
+            observer.observe(realEl, { childList: true, characterData: true, subtree: true });
+        }
+    });
 
 });
